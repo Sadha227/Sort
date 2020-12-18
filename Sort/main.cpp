@@ -6,6 +6,7 @@ using namespace std;
 void printArr(int* arr, int size);
 void bubbleSort(int* arr, int size);
 void selectionStor(int size, int* arr);
+void insertSort(int* arr, int size);
 int* makeArr(int size);
 void mySwap(int& a, int& b);
 
@@ -31,6 +32,18 @@ int main()
 	selectionStor(size1,arr1);
 	cout << "Array after sorting: " << endl;
 	printArr(arr1, size1);
+
+
+	 //insertion  //Сортировка вставками
+	srand(time(NULL));
+	int size2 = 10;
+	int* arr2 = makeArr(size2);
+	cout << "Initial array: " << endl;
+	printArr(arr2, size2);
+	insertSort(arr2, size2);
+	cout << "Array after sorting: " << endl;
+	printArr(arr2, size2);
+
 
 	delete arr;
 	return 0;
@@ -74,6 +87,20 @@ void selectionStor(int size, int* arr)
 		    }
 		}
 		mySwap(arr[i], arr[index]);
+	}
+}
+
+void insertSort(int* arr, int size)
+{
+	for (int i = 0; i < size - 1; i++)
+	{
+		int j = i + 1;
+		int tmp = arr[j];
+		for (; j >= 0 && tmp < arr[j - 1]; j--)
+		{
+			arr[j] = arr[j - 1];
+		}
+		arr[j] = tmp;
 	}
 }
 
